@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ADOP_Project_Part_B_Weather.Views.ForecastPage"
+             BackgroundColor="White"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Button BackgroundColor="MediumPurple" TextColor="White" Text="Refresh" Clicked="Button_Clicked" />
+
+            <!-- Your XAML code to present the weather data in a ListView-->
+
+            <ListView x:Name="GroupedForecast" 
+                      IsGroupingEnabled="true" 
+                      HasUnevenRows="true">
+
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Padding="5" TextColor="Blue" Text="{Binding Key, StringFormat='{0:dddd dd MMMM yyyy}'}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Image Source="{Binding Icon}" />
+                                <StackLayout>
+                                    <Label TextColor="Black" Text="{Binding DateTime, StringFormat='{0:H:mm}'}" />
+                                    <Label TextColor="Black" Text="{Binding Temperature}" />
+                                    <Label TextColor="Black" Text="{Binding WindSpeed}" />
+                                    <Label TextColor="Black" Text="{Binding Description}" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
